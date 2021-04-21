@@ -12,18 +12,6 @@
       <div class="proba-template">
         <h1>CON<br />TACT</h1>
       </div>
-      <div>
-        <div
-          class="proba-template"
-          v-for="project in projects"
-          :key="project.title"
-        >
-          <ul>
-            <p>{{ project.title }}</p>
-            <p>{{ project.description }}</p>
-          </ul>
-        </div>
-      </div>
       <about-modal v-if="showMe" @close="showMe = false"></about-modal>
       <projects-modal
         v-if="showModal"
@@ -49,48 +37,58 @@ export default {
   },
   data: function() {
     return {
+      projects: [
+        // {
+        //   id: 1,
+        //   title: "connect4",
+        //   directory: "connect4-new",
+        //   description:
+        //     "a simple web version of 'connect four' game. Two colors, two players, four tokens in line needed to win",
+        // },
+        // {
+        //   id: 2,
+        //   title: "pane",
+        //   directory: "pane",
+        //   description:
+        //     "dynamic, interactive and visually attractive element for every website",
+        // },
+        // {
+        //   id: 3,
+        //   title: "spiced website",
+        //   directory: "spiced-web",
+        //   description: "website for spiced academy",
+        // },
+        // {
+        //   id: 4,
+        //   title: "spotify",
+        //   directory: "spotify",
+        //   description:
+        //     "a search engine for music artists and albums utilizing spotify's API",
+        // },
+      ],
       showMe: false,
       showModal: false,
-      projects: [
-        {
-          id: 1,
-          title: "connect4",
-          directory: "connect4-new",
-          description:
-            "a simple web version of 'connect four' game. Two colors, two players, four tokens in line needed to win",
-        },
-        {
-          id: 2,
-          title: "pane",
-          directory: "pane",
-          description:
-            "dynamic, interactive and visually attractive element for every website",
-        },
-        {
-          id: 3,
-          title: "spiced website",
-          directory: "spiced-web",
-          description: "website for spiced academy",
-        },
-        {
-          id: 4,
-          title: "spotify",
-          directory: "spotify",
-          description:
-            "a search engine for music artists and albums utilizing spotify's API",
-        },
-      ],
     };
   },
   mounted: function getProjects() {
-    var self = this;
-    axios.get("http://localhost:8080/projects.json").then(function(response) {
-      console.log("response", response);
-
-      console.log("self: ", self);
-      // console.log("this inside then: ", this);
-      console.log("this.projects inside then: ", this.projects);
-    });
+    // var self = this;
+    // axios.get("http://localhost:8080/projects.json").then(function(response) {
+    //   console.log("response", response);
+    //   console.log("self: ", self);
+    //   // console.log("this inside then: ", this);
+    //   //console.log("this.projects inside then: ", this.projects);
+    // });
+    // ///return response;
+    var me = this;
+    axios
+      .get("http://localhost:8080/projects.json")
+      .then(function(response) {
+        console.log("response from getProjects: ", response);
+        me.projects = response.data;
+      })
+      .catch(function(err) {
+        console.log("err in GET /projects: ", err);
+      });
   },
   methods: {
     // showModal() {

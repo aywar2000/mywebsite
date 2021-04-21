@@ -4,7 +4,7 @@
       <h1>ABOUT ME</h1>
       <div class="images">
         <!--novo-->
-        <img />
+        <img src="" alt="kojeto" />
       </div>
     </div>
   </div>

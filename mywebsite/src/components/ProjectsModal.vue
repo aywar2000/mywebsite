@@ -1,12 +1,10 @@
 <template>
   <div class="overlay" @click.self="closeModal">
     <div class="modal">
-      <ul v-for="project in projects" :key="project.title">
-        <li>
-          <p>{{ project.id }}</p>
-          <p>{{ project.title }}</p>
-          <p>{{ project.description }}</p>
-        </li>
+      <ul v-for="project in projects" :key="project.id">
+        <p>{{ project.id }}</p>
+        <p>{{ project.title }}</p>
+        <p>{{ project.description }}</p>
       </ul>
       <div class="images">
         <!--novo-->
@@ -22,22 +20,49 @@ import axios from "axios";
 
 export default {
   name: "ProjectsModal",
-  props: ["projects"],
 
   data: function() {
     return {
       id: "",
-      title: [],
+      title: "",
       directory: "",
       description: "",
     };
   },
 
-  methods: {
-    getProjects() {
-      console.log("add json data...");
-      axios.get("http://localhost:8080/projects.json");
+  watch: {
+    projects: function() {
+      this.getData();
     },
+  },
+  props: ["projects"],
+  mounted: function() {
+    this.getData();
+  },
+  methods: {
+    getData: function() {
+      var me = this;
+      axios
+        //.get(`/image/${this.imageId}`)
+        .get(`http://localhost:8080/projects.json`)
+        .then(function(response) {
+          if (response.data != 0) {
+            me.projects = response.data;
+            console.log("response from modalreceived", me.projects);
+          } else {
+            console.log("no response received");
+            me.$emit("close");
+          }
+        })
+        .catch(function(err) {
+          console.log("err in GET /project", err);
+        });
+    },
+
+    // getProjects() {
+    //   console.log("add json data...");
+    //   axios.get("http://localhost:8080/projects.json");
+    // },
     showModal() {
       console.log("click happens");
       //console.log("propzz", this.props);
@@ -64,6 +89,9 @@ export default {
     rgb(24, 21, 21, 0.7)
   );
 }
+.modal > ul {
+  color: white;
+}
 .overlay {
   position: fixed;
   top: 0;
@@ -76,8 +104,8 @@ export default {
   background: linear-gradient(
     180deg,
     rgb(0, 0, 0, 0.7),
-    rgba(61, 59, 59, 0.3),
-    rgb(24, 21, 21, 0.4)
+    rgba(61, 59, 59, 0.5),
+    rgb(24, 21, 21, 0.6)
   );
   /* background-color: rgba(0, 0, 0, 0.7); */
   align-items: center;
