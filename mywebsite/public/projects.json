@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "title": "connect4",
-    "directory": "connect4-new",
-    "description": "a simple web version of 'connect four' game. Two colors, two players, four tokens in line needed to win"
+    "title": "spotify",
+    "directory": "spotify",
+    "description": "a search engine for music artists and albums utilizing spotify's API"
   },
 
   {
@@ -15,15 +15,15 @@
 
   {
     "id": 3,
-    "title": "spiced website",
+    "title": "holy grails",
     "directory": "spiced-web",
-    "description": "website for spiced academy"
+    "description": "various webdesign freestyles"
   },
 
   {
     "id": 4,
-    "title": "spotify",
+    "title": "slotmachine",
     "directory": "spotify",
-    "description": "a search engine for music artists and albums utilizing spotify's API"
+    "description": "https://slots3d.herokuapp.com/"
   }
 ]

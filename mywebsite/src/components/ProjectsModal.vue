@@ -1,15 +1,15 @@
 <template>
   <div class="overlay" @click.self="closeModal">
-    <div class="modal">
-      <ul v-for="project in projects" :key="project.id">
-        <p>{{ project.id }}</p>
-        <p>{{ project.title }}</p>
-        <p>{{ project.description }}</p>
-      </ul>
-      <div class="images">
-        <!--novo-->
-        <img />
+    <div class="projects-modal">
+      <!--  -->
+      <div class="project-item">
+        <ul v-for="project in projects" :key="project.id">
+          <img src="" class="img-proba" />
+          <p>{{ project.title }}</p>
+          <p>{{ project.description }}</p>
+        </ul>
       </div>
+      <hr />
     </div>
   </div>
 </template>
@@ -19,19 +19,6 @@ import axios from "axios";
 // import VueAxios from "vue-axios";
 export default {
   name: "ProjectsModal",
-  data: function() {
-    return {
-      id: "",
-      title: "",
-      directory: "",
-      description: "",
-    };
-  },
-  watch: {
-    projects: function() {
-      this.getData();
-    },
-  },
   props: ["projects"],
   mounted: function() {
     this.getData();
@@ -40,7 +27,6 @@ export default {
     getData: function() {
       var me = this;
       axios
-        //.get(`/image/${this.imageId}`)
         .get(`http://localhost:8080/projects.json`)
         .then(function(response) {
           if (response.data != 0) {
@@ -55,10 +41,7 @@ export default {
           console.log("err in GET /project", err);
         });
     },
-    // getProjects() {
-    //   console.log("add json data...");
-    //   axios.get("http://localhost:8080/projects.json");
-    // },
+
     showModal() {
       console.log("click happens");
       //console.log("propzz", this.props);
@@ -73,10 +56,10 @@ export default {
 </script>
 
 <style>
-.modal {
-  height: 400px;
-  width: 600px;
-  border: 1px solid green;
+.projects-modal {
+  height: 80%;
+  width: 60%;
+  border: 1px solid rgb(78, 128, 78);
   color: white;
   background: linear-gradient(
     180deg,
@@ -105,7 +88,19 @@ export default {
   align-items: center;
 }
 
-.modal > ul {
+.projects-modal > ul {
   color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.img-proba {
+  height: 100px;
+  width: 100px;
 }
 </style>

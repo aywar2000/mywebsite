@@ -21,9 +21,9 @@ export default {
   left: 0;
   height: 50px;
   margin-top: 250px;
-  border: 1px solid green;
+  border: 1.5px dashed rgb(50, 87, 50);
 }
 a:hover {
-  color: green;
+  color: rgb(50, 87, 50);
 }
 </style>

@@ -11,11 +11,15 @@
         <h1>__PRO<br />JECTS</h1>
       </div>
 
-      <div class="proba-template">
+      <div class="proba-template" @click="contactMe = true">
         <h1>CON<br />TACT</h1>
       </div>
 
       <about-modal v-if="showMe" @close="showMe = false"></about-modal>
+      <contact-modal
+        v-if="contactMe"
+        @close="contactMe = false"
+      ></contact-modal>
 
       <projects-modal
         v-if="showModal"
@@ -30,9 +34,9 @@
 import Header from "./components/Header.vue";
 import ProjectsModal from "./components/ProjectsModal.vue";
 import AboutModal from "./components/AboutModal.vue";
-//import PyramidComponent from "./components/PyramidComponent.vue";
+import ContactModal from "./components/ContactModal.vue";
 import Footer from "./components/Footer.vue";
-//import carousel from "./components/Carousel.vue";
+//import Carousel from "./components/Carousel.vue";
 import axios from "axios";
 
 export default {
@@ -42,7 +46,7 @@ export default {
     ProjectsModal,
     AboutModal,
     //Carousel,
-    //PyramidComponent,
+    ContactModal,
     Footer,
     //
   },
@@ -51,6 +55,7 @@ export default {
       projects: ["id", "title", "description"],
       showMe: false,
       showModal: false,
+      contactMe: false,
       flip: false,
       vueCanvas: null,
     };
@@ -69,9 +74,6 @@ export default {
   },
 
   methods: {
-    // showModal() {
-    //   console.log("click happens");
-    // },
     closeModal: function() {
       console.log("zatvorio");
       // show = false;
@@ -86,7 +88,7 @@ export default {
 }
 
 .content {
-  padding-top: 50px;
+  /* padding-top: 50px; */
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -94,10 +96,11 @@ export default {
 }
 
 .proba-template {
+  margin-top: 100px;
   color: white;
   height: 200px;
   width: 200px;
-  border: 1px solid green;
+  border: 2px solid rgb(26, 80, 26);
   background: linear-gradient(
     180deg,
     rgb(0, 0, 0),
@@ -105,5 +108,8 @@ export default {
     rgb(24, 21, 21)
   );
   cursor: pointer;
+}
+h1:hover {
+  color: coral;
 }
 </style>

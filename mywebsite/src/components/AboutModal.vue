@@ -29,9 +29,6 @@ export default {
       console.log("zatvorio");
       this.$emit("close");
     },
-    rotateImg: function() {
-      console.log("click on img");
-    },
   },
 };
 </script>
