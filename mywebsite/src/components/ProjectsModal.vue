@@ -17,10 +17,8 @@
 <script>
 import axios from "axios";
 // import VueAxios from "vue-axios";
-
 export default {
   name: "ProjectsModal",
-
   data: function() {
     return {
       id: "",
@@ -29,7 +27,6 @@ export default {
       description: "",
     };
   },
-
   watch: {
     projects: function() {
       this.getData();
@@ -58,7 +55,6 @@ export default {
           console.log("err in GET /project", err);
         });
     },
-
     // getProjects() {
     //   console.log("add json data...");
     //   axios.get("http://localhost:8080/projects.json");
@@ -89,9 +85,7 @@ export default {
     rgb(24, 21, 21, 0.7)
   );
 }
-.modal > ul {
-  color: white;
-}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -103,11 +97,15 @@ export default {
   justify-content: center;
   background: linear-gradient(
     180deg,
-    rgb(0, 0, 0, 0.7),
-    rgba(61, 59, 59, 0.5),
+    rgba(20, 19, 19, 0.2),
+    rgba(36, 35, 35, 0.5),
     rgb(24, 21, 21, 0.6)
   );
   /* background-color: rgba(0, 0, 0, 0.7); */
   align-items: center;
+}
+
+.modal > ul {
+  color: white;
 }
 </style>
