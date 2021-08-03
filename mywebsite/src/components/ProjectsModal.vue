@@ -61,6 +61,7 @@ export default {
   width: 60%;
   border: 1px solid rgb(78, 128, 78);
   color: white;
+
   background: linear-gradient(
     180deg,
     rgb(0, 0, 0, 0.9),
@@ -88,15 +89,9 @@ export default {
   align-items: center;
 }
 
-.projects-modal > ul {
-  color: white;
-  display: flex;
-  flex-direction: column;
-}
-
 .project-item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .img-proba {
