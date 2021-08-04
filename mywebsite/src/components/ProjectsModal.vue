@@ -2,14 +2,21 @@
   <div class="overlay" @click.self="closeModal">
     <div class="projects-modal">
       <!--  -->
-      <div class="project-item">
+      <div class="project-item" style="overflow-y: scroll; height:400px;">
         <ul v-for="project in projects" :key="project.id">
-          <img src="" class="img-proba" />
-          <p>{{ project.title }}</p>
-          <p>{{ project.description }}</p>
+          <div class="project-img">
+            <img src="" class="img-proba" />
+            <div>
+              <button>visit</button>
+              <button>github</button>
+            </div>
+          </div>
+          <div class="project-desc">
+            <p>{{ project.title }}</p>
+            <p>{{ project.description }}</p>
+          </div>
         </ul>
       </div>
-      <hr />
     </div>
   </div>
 </template>
@@ -93,9 +100,21 @@ export default {
   display: flex;
   flex-direction: column;
 }
+/* .project-item:hover {
+  border: 1.5px solid rgb(47, 88, 47);
+} */
 
 .img-proba {
   height: 100px;
   width: 100px;
+}
+.project-img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+ul > button {
+  border: 1px solid coral;
 }
 </style>

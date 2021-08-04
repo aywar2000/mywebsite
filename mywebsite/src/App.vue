@@ -112,4 +112,16 @@ export default {
 h1:hover {
   color: coral;
 }
+
+/* @media (min-width: 400px) {
+  .content {
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly;
+    font-family: "Press Start 2P";
+  }
+} */
 </style>
