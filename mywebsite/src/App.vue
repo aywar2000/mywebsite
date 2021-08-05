@@ -84,7 +84,7 @@ export default {
 
 <style>
 #app {
-  width: 100%;
+  width: 90%;
 }
 
 .content {
